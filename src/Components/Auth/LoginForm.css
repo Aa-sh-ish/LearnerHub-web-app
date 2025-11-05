@@ -11,6 +11,16 @@
   align-items: center;
 }
 
+.logo {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  width: 500px;
+  height: auto;
+  z-index: 2;
+  object-fit: contain;
+}
+
 .overlay {
   position: absolute;
   inset: 0;
@@ -45,7 +55,7 @@
 }
 
 .back-icon:hover {
-  color: #007bff;
+  color: #00CC99;
 }
 
 /* Tabs */
@@ -69,12 +79,12 @@
 }
 
 .tab-btn.active {
-  color: #007bff;
-  border-bottom: 3px solid #007bff;
+  color: #2A5478;
+  border-bottom: 3px solid #2A5478;
 }
 
 .tab-btn:hover {
-  color: #007bff;
+  color: #2A5478;
 }
 
 /* Form */
@@ -102,14 +112,14 @@
 }
 
 .input-group input:focus {
-  border-color: #007bff;
+  border-color: #2A5478;
 }
 
 /* Buttons */
 button {
   width: 100%;
   padding: 12px;
-  background-color: #007bff;
+  background-color: #2A5478;
   color: white;
   border: none;
   border-radius: 8px;
@@ -119,5 +129,13 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #2a547893;
+}
+
+@media (max-width: 768px) {
+  .logo {
+    width: 250px;
+    top: 20px;
+    left: 20px;
+  }
 }

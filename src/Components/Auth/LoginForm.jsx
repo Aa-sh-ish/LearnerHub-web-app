@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
+import logo from "../../assets/logo.png"
 import "./LoginForm.css";
 
 const LoginForm = () => {
@@ -27,6 +28,7 @@ const LoginForm = () => {
 
   return (
     <div className="login-background">
+        <img src= {logo} alt="App Logo" className="logo" />
       <div className="overlay"></div>
 
       <div className="login-card">
