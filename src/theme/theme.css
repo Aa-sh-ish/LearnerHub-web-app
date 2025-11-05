@@ -1,0 +1,21 @@
+:root {
+  /* === Brand Colors === */
+  --color-primary: #2A5478;      /* Deep Blue - Trust & Professionalism */
+  --color-secondary: #00cc99;    /* Bright Teal - Accent & Energy */
+
+  /* === Backgrounds === */
+  --color-background: #F5F7F8;   /* Soft Light Gray - App Background */
+  --color-surface: #FFFFFF;      /* White - Card/Container Surface */
+
+  /* === Text Colors === */
+  --color-headline: #333333;     /* Dark Slate - Headlines */
+  --color-body: #666666;         /* Medium Gray - Body Text */
+
+  /* === Status Colors === */
+  --color-success: #4CAF50;      /* Light Green - Success */
+  --color-error: #D32F2F;        /* Vibrant Red - Error */
+
+  /* === Optional Elevation & Shadows === */
+  --shadow-card: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  --border-radius: 8px;
+}

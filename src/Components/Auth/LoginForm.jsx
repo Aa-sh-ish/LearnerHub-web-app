@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
+import { toast } from "react-toastify";
+
 import logo from "../../assets/logo.png"
+import { loginUser, registerUser } from "../../Apis/authApi/authApiCall";
 import "./LoginForm.css";
 
 const LoginForm = () => {
@@ -13,6 +16,9 @@ const LoginForm = () => {
     dob: "",
     password: "",
   });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
 
   const handleChange = (e) => {
     setFormData({
@@ -21,10 +27,24 @@ const LoginForm = () => {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert(`${activeTab.toUpperCase()} DATA:\n` + JSON.stringify(formData, null, 2));
-  };
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setLoading(true);
+  setError("");
+
+  try {
+    const result = await loginUser(formData.email, formData.password);
+    toast.success(" Login successful!");
+    console.log("✅ Login successful:", result);
+    // e.g., navigate or save token
+  } catch (err) {
+    toast.error(` ${err.message || "Login failed!"}`);
+    console.error("❌ Login failed:", err.message);
+    setError(err.message);
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <div className="login-background">
@@ -167,8 +187,10 @@ const LoginForm = () => {
                   />
                 </div>
 
-                <button type="submit">Register</button>
-              </>
+      <button type="submit" disabled={loading}>
+        {loading ? "Processing..." : activeTab === "login" ? "Login" : "Register"}
+      </button> 
+                   </>
             )}
           </form>
         )}
