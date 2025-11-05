@@ -1,0 +1,123 @@
+/* Background setup */
+.login-background {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background-image: url("https://images.unsplash.com/photo-1522071820081-009f0129c71c");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* Card styling */
+.login-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  width: 360px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+  padding: 30px 25px;
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+/* Back icon */
+.card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.back-icon {
+  font-size: 20px;
+  color: #333;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.back-icon:hover {
+  color: #007bff;
+}
+
+/* Tabs */
+.tab-container {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #ddd;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #666;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: 0.3s;
+}
+
+.tab-btn.active {
+  color: #007bff;
+  border-bottom: 3px solid #007bff;
+}
+
+.tab-btn:hover {
+  color: #007bff;
+}
+
+/* Form */
+.form-content {
+  text-align: left;
+}
+
+.input-group {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  margin-bottom: 6px;
+  color: #444;
+}
+
+.input-group input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 14px;
+}
+
+.input-group input:focus {
+  border-color: #007bff;
+}
+
+/* Buttons */
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
