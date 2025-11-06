@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 import logo from "../../assets/logo.png"
 import { loginUser, registerUser } from "../../Apis/authApi/authApiCall";
 import "./LoginForm.css";
+import { AuthContext } from "./AuthContext";
 
 const LoginForm = () => {
   const [activeTab, setActiveTab] = useState("login");
@@ -18,7 +20,8 @@ const LoginForm = () => {
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-
+  const navigate = useNavigate();
+  const { login } = useContext(AuthContext);
 
   const handleChange = (e) => {
     setFormData({
@@ -27,24 +30,56 @@ const LoginForm = () => {
     });
   };
 
-const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  setLoading(true);
+  setError("");
+  if (activeTab === "login") {
+     handleLogin(e);
+  } else if (activeTab === "register") {
+  handleRegister(e);
+  }
+  };
+
+const handleRegister = async (e) => {
   e.preventDefault();
   setLoading(true);
   setError("");
 
   try {
-    const result = await loginUser(formData.email, formData.password);
-    toast.success(" Login successful!");
-    console.log("✅ Login successful:", result);
+    const result = await registerUser(formData);
+    toast.success("Registration successful!");
+    console.log("✅ Registration successful:", result);
     // e.g., navigate or save token
   } catch (err) {
-    toast.error(` ${err.message || "Login failed!"}`);
-    console.error("❌ Login failed:", err.message);
+    toast.error(` ${err.message || "Registration failed!"}`);
+    console.error("❌ Registration failed:", err.message);
     setError(err.message);
   } finally {
     setLoading(false);
   }
 };
+
+const handleLogin = async (e) => {
+  e.preventDefault();
+  setLoading(true);
+  setError("");
+
+  try {
+      const result = await loginUser(formData.email, formData.password);
+      toast.success(" Login successful!");
+      console.log("Token received:", result.token);
+      login(result.token);
+      navigate("/home")
+      console.log("✅ Login successful:", result);
+    } catch (err) {
+      toast.error(` ${err.message || "Login failed!"}`);
+      console.error("❌ Login failed:", err.message);
+      setError(err.message);
+  } finally {
+    setLoading(false);
+  }
+ }
 
   return (
     <div className="login-background">
