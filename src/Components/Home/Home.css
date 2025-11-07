@@ -1,0 +1,97 @@
+  .home-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Drawer Styles */
+.drawer {
+  background-color: #1e293b; /* dark slate */
+  color: white;
+  width: 240px;
+  min-width: 240px;
+  transition: transform 0.3s ease;
+  padding: 20px;
+}
+
+.drawer.closed {
+  transform: translateX(-100%);
+  position: absolute;
+  z-index: 1000;
+  height: 100%;
+}
+
+.drawer.open {
+  transform: translateX(0);
+}
+
+.drawer-title {
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.drawer-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.drawer-menu li {
+  padding: 10px 0;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.drawer-menu li:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.logout-btn {
+  margin-top: 20px;
+  padding: 10px;
+  width: 100%;
+  background-color: #ef4444;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.logout-btn:hover {
+  background-color: #dc2626;
+}
+
+/* Main Content */
+.content {
+  flex: 1;
+  padding: 20px;
+  position: relative;
+}
+
+/* Toggle button for small screens */
+.drawer-toggle {
+  display: none;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #1e293b;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+/* Show toggle on small screens */
+@media (max-width: 1023px) {
+  .drawer-toggle {
+    display: block;
+  }
+
+  .drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+  }
+}

@@ -9,6 +9,3 @@ root.render(
     <App />
   </AuthProvider>
 );
-
-
-// reportWebVitals();

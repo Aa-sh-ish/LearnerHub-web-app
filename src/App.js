@@ -1,19 +1,19 @@
-// import logo from './logo.svg';
+import React, { useContext } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useContext } from "react";
-
-import './App.css';
 import { AuthContext } from "./Components/Auth/AuthContext";
-import HomePage  from "./Components/Home/home";
+
+import LoginForm from "./Components/Auth/LoginForm";
 import ChatPage from "./Components/Chat/chat";
-import LoginForm from './Components/Auth/LoginForm';
+import Dashboard from "./Components/Dashboard/Dashboard";
+import Courses from "./Components/Courses/Courses";
+import Liveclasses from "./Components/LiveClasses/LiveClasses";
+import Profile from "./Components/Profile/Profile";
+import MainLayout from "./Components/Home/Home";
 
 function App() {
-  const { isAuthenticated } = useContext(AuthContext); // ✅ This will now work
-  console.log("Authentication status:", isAuthenticated);
-  console.log("Token value:", localStorage.getItem("authToken"));
+  const { isAuthenticated } = useContext(AuthContext);
 
   return (
     <Router>
@@ -25,12 +25,18 @@ function App() {
           }
         />
         <Route path="/login" element={<LoginForm />} />
-        <Route
-          path="/home"
-          element={
-            isAuthenticated ? <HomePage /> : <Navigate to="/login" />
-          }
-        />
+
+        {/* ✅ Protected routes inside drawer layout */}
+        {isAuthenticated && (
+          <Route element={<MainLayout />}>
+            <Route path="/home" element={<Dashboard />} />
+            <Route path="/courses" element={<Courses />} />
+            <Route path="/liveclasses" element={<Liveclasses />} />
+            <Route path="/profile" element={<Profile />} />
+          </Route>
+        )}
+
+        {/* Example for Chat (outside layout if needed) */}
         <Route
           path="/chat"
           element={
