@@ -11,6 +11,7 @@ import Courses from "./Components/Courses/Courses";
 import Liveclasses from "./Components/LiveClasses/LiveClasses";
 import Profile from "./Components/Profile/Profile";
 import MainLayout from "./Components/Home/Home";
+import SuperAdmin from "./Components/SuperAdmin/SuperAdmin";
 
 function App() {
   const { isAuthenticated } = useContext(AuthContext);
@@ -41,6 +42,13 @@ function App() {
           path="/chat"
           element={
             isAuthenticated ? <ChatPage /> : <Navigate to="/login" />
+          }
+        />
+        <Route
+          path="/superAdmin"
+          element={
+            isAuthenticated ? <
+            SuperAdmin /> : <Navigate to="/superAdmin" />
           }
         />
       </Routes>
