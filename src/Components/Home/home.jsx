@@ -46,7 +46,7 @@ function Home() {
           className="drawer-toggle"
           onClick={() => setIsDrawerOpen(!isDrawerOpen)}
         >
-          ☰
+          
         </button>
 
         {/* Render child routes here */}

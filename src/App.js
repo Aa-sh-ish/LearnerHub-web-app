@@ -10,8 +10,8 @@ import Dashboard from "./Components/Dashboard/Dashboard";
 import Courses from "./Components/Courses/Courses";
 import Liveclasses from "./Components/LiveClasses/LiveClasses";
 import Profile from "./Components/Profile/Profile";
-import MainLayout from "./Components/Home/Home";
 import SuperAdmin from "./Components/SuperAdmin/SuperAdmin";
+import Home from "./Components/Home/home";
 
 function App() {
   const { isAuthenticated } = useContext(AuthContext);
@@ -29,7 +29,7 @@ function App() {
 
         {/* ✅ Protected routes inside drawer layout */}
         {isAuthenticated && (
-          <Route element={<MainLayout />}>
+          <Route element={<Home />}>
             <Route path="/home" element={<Dashboard />} />
             <Route path="/courses" element={<Courses />} />
             <Route path="/liveclasses" element={<Liveclasses />} />
